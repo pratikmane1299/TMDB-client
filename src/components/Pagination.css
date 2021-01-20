@@ -1,0 +1,32 @@
+.pagination-wrapper {
+  box-sizing: border-box;
+  text-align: center;
+  border-top: 1px solid #edebef;
+  padding-top: 24px;
+  padding-bottom: 60px;
+}
+
+.pagination-meta {
+  float: left;
+  margin-top: 6px;
+  margin-right: 10px;
+  cursor: default;
+  font-weight: 400;
+}
+
+.pagination-first,.pagination-prev,.pagination-last,.pagination-next  {
+  text-align: center;
+}
+
+.pagination-first, .pagination-next {
+  margin-left: 50px;
+}
+
+.pagination-prev {
+  margin-right: 50px;
+}
+
+ul > li {
+  cursor: pointer;
+  margin: 0 0.3rem;
+}

@@ -4,14 +4,24 @@ import './App.css';
 
 import { getMovies } from './services/movies';
 import Movie from './components/Movie';
+import Pagination from './components/Pagination';
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalItems, setTotalItems] = useState(null);
 
   useEffect(() => {
-    getMovies(1)
-      .then(data => setMovies(data.results));
-  }, []);
+    getMovies(page)
+      .then(data => {
+        setMovies(data.results);
+        setTotalItems(data.total_results);
+      });
+  }, [page]);
+
+  function handlePageChange(page) {
+    setPage(page);
+  }
 
   return (
     <>
@@ -35,6 +45,12 @@ function App() {
             <Movie key={movie.id} movie={movie} />
           ))}
         </div>
+        <Pagination 
+          totalItems={totalItems} 
+          currentPage={page} 
+          pageSize={20}
+          onPageChange={handlePageChange}
+        />
       </main>
     </>
   );
