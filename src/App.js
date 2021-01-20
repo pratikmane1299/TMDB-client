@@ -2,25 +2,41 @@ import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { getMovies } from './services/movies';
+import { getMovies, searchMovies } from './services/movies';
+
 import Movie from './components/Movie';
 import Pagination from './components/Pagination';
+import SearchBox from './components/SearchBox';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalItems, setTotalItems] = useState(null);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    getMovies(page)
-      .then(data => {
-        setMovies(data.results);
-        setTotalItems(data.total_results);
-      });
-  }, [page]);
+    if (query !== '' && query.length > 3) {
+      searchMovies(query, page)
+        .then(data => {
+          setMovies(data.results);
+          setTotalItems(data.total_results);
+        });
+    } else {
+      getMovies(page)
+        .then(data => {
+          setMovies(data.results);
+          setTotalItems(data.total_results);
+        });
+    }
+  }, [page, query]);
 
   function handlePageChange(page) {
     setPage(page);
+  }
+
+  function handleSearch(q) {
+    setQuery(q);
+    setPage(1);
   }
 
   return (
@@ -32,22 +48,35 @@ function App() {
             React Pagination
           </a>
           <div className="collapse navbar-collapse" id="navbarColor01">
-            <form className="form-inline my-2 my-lg-0 ml-auto">
-              <input className="form-control mr-sm-2" type="text" placeholder="Search" />
-              <button className="btn btn-secondary my-2 my-sm-0">Search</button>
-            </form>
+            <div className="mx-auto w-50">
+              <SearchBox value={query} onChange={handleSearch} />
+            </div>
           </div>
         </div>
       </nav>
       <main className="container mt-3">
+        {query !== '' && (
+          <div className="search-result-meta-container">
+            <span className="search-result-meta">
+              Found <strong>{totalItems}</strong> movies matching <strong>{query}</strong>.
+              </span>
+            <span
+              type="button"
+              className="clear-filter-button"
+              onClick={() => setQuery('')}
+            >
+              Clear filter
+              </span>
+          </div>
+        )}
         <div className="row">
           {movies.map(movie => (
             <Movie key={movie.id} movie={movie} />
           ))}
         </div>
-        <Pagination 
-          totalItems={totalItems} 
-          currentPage={page} 
+        <Pagination
+          totalItems={totalItems}
+          currentPage={page}
           pageSize={20}
           onPageChange={handlePageChange}
         />

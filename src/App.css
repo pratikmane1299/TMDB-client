@@ -3,6 +3,37 @@
   width: 50px;
 }
 
+.search-result-meta-container {
+  width: 100%;
+  border-top: 1px solid #edebef;
+  border-bottom: 1px solid #edebef;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 1rem;
+}
+
+.search-result-meta {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.clear-filter-button {
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 16px;
+  font-size: bold;
+}
+
+.clear-filter-button:hover {
+  color: #4f8cc9;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .logo {
     animation: logoSpin infinite 10s linear;
