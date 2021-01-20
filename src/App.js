@@ -3,22 +3,25 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <a className="navbar-brand" href="https://reactjs.org" target="blank">
+            <img src={logo} alt="react" className="logo" />
+            React Pagination
+          </a>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" />
+              <button class="btn btn-secondary my-2 my-sm-0">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <main className="container mt-4">
+        <p>React Pagination Example</p>
+      </main>
+    </>
   );
 }
 
