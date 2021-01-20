@@ -1,3 +1,13 @@
+# React Pagination
+
+Demonstrates searching and pagination consuming the [TMDB movies api](https://developers.themoviedb.org/3/getting-started/introduction).
+
+## Setting up TMDB API
+
+1.  Signup for TMDB api at https://www.themoviedb.org/signup.
+2.  Create <code>tmdb-api-key.js</code> in src folder and add constant <code>TMDB_API_KEY</code> with
+your api key.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

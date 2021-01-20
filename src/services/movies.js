@@ -1,5 +1,7 @@
-const API_URL = 'https://api.themoviedb.org/3/movie/top_rated?api_key=7b8a973e4cd686677c1d19666cc4ee3b'
-const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?api_key=7b8a973e4cd686677c1d19666cc4ee3b';
+import { TMDB_API_KEY } from '../tmdb-api-key';
+
+const API_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}`
+const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}`;
 
 export async function getMovies(page) {
   const response = await fetch(`${API_URL}&page=${page}`)
